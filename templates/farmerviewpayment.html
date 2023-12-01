@@ -1,0 +1,77 @@
+
+{% extends 'farmerbase.html' %}
+{% block content %}
+<html>
+    <head>
+        <title>farmerviewpayments</title>
+        <style>
+            td{
+                padding:4px;
+               color: black;font-size: 18px;font-weight: 800;
+               text-align: center;
+            }
+            th{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <br><br><br>
+        <h1 style="text-align:center; color: rgb(16, 75, 16);font-weight: bold;">PAYMENT DETAILS</h1>
+        {% if j %}
+        <table align="center" border="1">
+            <tr>
+                <th>customerid</th>
+                <th>Customer Name</th>
+                <th>productname</th>
+                <th>cardnumber</th>
+               
+                <th>nameoncard</th>
+                <th>expiration</th>
+                <th>Price</th>
+                <th>status</th>
+                
+                
+            </tr>
+            {% for i in j %}
+            <tr>
+                <td>{{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.3}}</td>
+               
+                <td>{{i.5}}</td>
+                <td>{{i.6}}</td>
+                <td>{{i.7}}</td>
+                <td>{{i.8}}</td>
+                
+                
+                
+               <!----- <td><a href="/deletefarmer?id={{i.0}}">delete</a></td>--->
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h4 style="text-align:center"> No payment details  available </h4>
+         {% endif %}
+
+        
+        <script>
+
+            var msg="{{msg}}";
+            if(msg!="")
+            {
+            alert(msg);
+            }
+        
+        </script>
+        <br><br><br>
+    </body>
+</html>
+{% endblock %}

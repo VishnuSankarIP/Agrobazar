@@ -1,0 +1,177 @@
+
+{% extends 'farmerbase.html' %}
+{% block content %}
+
+<html>
+<head>
+<title>productadd</title>    
+<style>
+    td{
+        padding:5px;
+    }
+    h1{
+                color:rgb(16, 48, 16);
+                text-align: center;
+
+            }
+            td{
+                padding:4px;
+               color: black;font-size: 20px;font-weight: 900;
+               text-align: center;
+            }
+            th{
+                width: 150px;
+                height: 25px;
+               
+                color: white;
+                font-size: 20px;
+            }
+            
+            #para{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+            }
+            #para1{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+            }#para2
+            {
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+            }#para3{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+            }
+            #para4{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+            }
+            #para5{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+            }
+            #table1{
+                background-color:white;
+            }
+            #demo{
+    background-color: rgb(111, 119, 117);
+    width:700px;
+    margin-left:410px;
+    border-radius: 30px;
+}
+#demo1{
+    background-color: rgb(111, 119, 117);
+    width:1200px;
+    margin-left:110px;
+    border-radius: 30px;
+}
+</style>
+    
+</head>
+<body>
+    <br><br>
+    <div id="demo">
+    <h1><b>ADD PRODUCT</b></h1><br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center">
+       
+        <tr>
+            <th>Product name</th>
+            <td><input type="text" name="name" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Product category</th>
+            <td><select class="form-control" name="category" required style="color: black;font-size: 16px;font-weight: bold;">
+                <option value="grains">Grains</option>
+                <option value="spices">Spices</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegitables">Vegitables</option>
+            </td>
+            
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><textarea name="description" class="form-control"></textarea></td>   
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td><input type="text" name="price" class="form-control" placeholder="per one kg" required></td>   
+        </tr>
+
+        
+        <tr>
+            <th>Image</th>
+            <td><input type="file" name="image"  class="form-control" required>
+            </td>
+        </tr>
+        <tr>
+            
+            <td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-success">
+            </td>
+        </tr>
+        
+
+
+
+        
+    </table>
+</form>
+</div>
+<br>
+<div id="demo1">
+<h1 style="text-align:center;"><b>ADDED PRODUCTS</b></h1>
+        <table align="center" border="1" id="table1">
+            <tr>
+                <th id="para">ID</th>
+                <th id="para1">Product Name</th>
+                <th id="para2">Category</th>
+                <th id="para3">Description</th>
+                <th id="para4">Price</th>
+                <th id="para5" colspan="2">Image</th>
+                
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td> {{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.3}}</td>
+                <td>{{i.4}}</td>
+                <td>{{i.5}}</td>
+                <td><img src="../static{{i.6}}" height="150px" width="150px"></td>
+                <td><a href="/deleteproduct?productid={{i.1}}">DELETE</a></td>
+                
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+<br><br><br>
+{% endblock %}
+<script>
+   var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+</script>
+
+</body>
+</html>

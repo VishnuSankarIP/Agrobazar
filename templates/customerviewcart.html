@@ -1,0 +1,70 @@
+{% extends 'customerbase.html' %}
+{% block content %}
+<html>
+    <head>
+        <title>viewcartproduct</title>
+        <style>
+            td{
+                padding:4px;
+               color: black;font-size: 18px;font-weight: 800;
+               text-align: center;
+            }
+            th{
+                width: 140px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <br><br>
+        <h1 style="text-align:center; font-size: 30px;color: rgb(8, 92, 19);"><b>VIEW CART</b></h1><br>
+        <table align="center" border="1" style="border-radius: 30px;">
+            <tr>
+               <th>CartID</th>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Photo</th>
+                <th>Booking Date</th>
+                <th>Required date</th>
+                <th colspan="2">Status</th>
+                
+            </tr>
+            {% for i in j %}
+            <tr>
+                <td>{{i.7}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.12}}</td>
+                <td>{{i.9}}</td>
+                <td><img src="../static{{i.5}}"></td>
+                <td>{{i.10}}</td>
+                <td>{{i.11}}</td>
+
+                <td>{{i.6}}</td>
+                {% if i.6 == "Approved" %}
+                <td><a href="/payment?cartid={{i.7}}&customerid={{i.8}}&farmerid={{i.0}}&productid={{i.1}}">Payment</a></td>
+                
+               {% endif %}
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+
+        
+        <script>
+
+            var msg="{{msg}}";
+            if(msg!="")
+            alert(msg)
+        
+        </script>
+        <br><br><br>
+    </body>
+</html>
+{% endblock %}

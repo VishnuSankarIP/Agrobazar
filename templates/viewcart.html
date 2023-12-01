@@ -1,0 +1,76 @@
+
+{% extends 'farmerbase.html' %}
+{% block content %}
+<html>
+    <head>
+        <title>viewcartproduct</title>
+        <style>
+            h1{
+               font-size: 40px;
+            }
+            td{
+                padding:4px;
+               color: black;font-size: 18px;font-weight: 800;
+               text-align: center;
+            }
+            th{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 17px;
+            }
+        </style>
+    </head>
+    <body>
+        <br>
+        <h1 style="text-align:center;">VIEW ORDERS</h1>
+        {% if j %}
+        <table align="center" border="1">
+            <tr>
+                
+                <th>CustomerID</th>
+                <th>ProductName</th>
+                <th>quantity</th>
+                <th>Price</th>
+                <th>Booking Date</th>
+                <th>Required date</th>
+                <th colspan="3">Assign</th>
+                
+            </tr>
+            {% for i in j %}
+            <tr>
+                
+                
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.3}}</td>
+                <td>{{i.6}}</td>
+                <td>{{i.4}}</td>
+                <td>{{i.5}}</td>
+                
+                
+              <td><a href="/viewdeliveryboy?cartid={{i.0}}&customerid={{i.1}}">Proceed</a></td>
+                <td><a href="/cancelorder?cartid={{i.0}}&customerid={{i.1}}">Cancel</a></td>
+                
+               
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+       <h4 style="text-align:center"> No orders available </h4>
+        {% endif %}
+        
+        <script>
+
+            var msg="{{msg}}";
+            if(msg!="")
+            alert(msg)
+        
+        </script>
+        <br><br><br>
+    </body>
+</html>
+{% endblock %}

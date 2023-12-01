@@ -1,0 +1,75 @@
+
+{% extends 'adminbase.html' %}
+{% block content %}
+<html>
+    <head>
+        <title>viewcartproduct</title>
+        <style>
+            h1{
+               font-size: 40px;
+            }
+            td{
+                padding:4px;
+               color: black;font-size: 18px;font-weight: 800;
+               text-align: center;
+            }
+            th{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 17px;
+            }
+        </style>
+    </head>
+    <body>
+        <br>
+        <h1 style="text-align:center;">VIEW ORDERS</h1>
+        {% if j %}
+        <table align="center" border="1">
+            <tr>
+                <th>CartID</th>
+                <th>CustomerID</th>
+                <th>FarmerID</th>
+                <th>ProductID</th>
+                <th>quantity</th>
+                <th>Price</th>
+                <th>Booking Date</th>
+                <th>Required date</th>
+             
+                
+            </tr>
+            {% for i in j %}
+            <tr>
+                
+                <td>{{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.3}}</td>
+                <td>{{i.4}}</td>
+                <td>{{i.6}}</td>
+                <td>{{i.7}}</td>
+                <td>{{i.8}}</td>
+                
+                
+             
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+       <h4 style="text-align:center"> No orders available </h4>
+        {% endif %}
+        
+        <script>
+
+            var msg="{{msg}}";
+            if(msg!="")
+            alert(msg)
+        
+        </script>
+        <br><br><br>
+    </body>
+</html>
+{% endblock %}

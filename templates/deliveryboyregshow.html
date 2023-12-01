@@ -1,0 +1,91 @@
+
+{% extends 'farmerbase.html' %}
+{% block content %}
+<html>
+    <head>
+        <title>Registered delivery boy</title>
+        <style>
+             td{
+                padding:4px;
+               color: black;font-size: 20px;font-weight: 900;
+               text-align: center;
+            }
+            th{
+                width: 150px;
+                height: 25px;
+               background-color: green;
+                color: white;
+                font-size: 20px;
+            }
+            #demo{
+    border:10px solid green;
+    width:700px;
+    margin-left:410px;
+    border-radius: 30px;
+}
+           
+        </style>
+    </head>
+    <br><br>
+    <div id="demo">
+    <h1 style="text-align:center;">Delivery boys</h1>
+    <body>
+        <br><br><br>
+        <form method="POST">
+            {% csrf_token %}
+        <table align="center">
+            <tr>
+
+<td>Select Delivery Boy</td>
+<td><select name="did" class="form-control" style="font-weight: bold;width: 140px;">
+
+    {% for d in data %}
+
+<option value="{{d.0}}">{{d.1}}</option>
+{% endfor %}
+
+</select></td>
+<td><input type="submit" name="submit" value="ASSIGN" class="btn btn-success"></td>
+
+
+
+            </tr>
+                </form>
+            </table>    
+        </form>
+    </div>
+          <br>
+          <h1 style="text-align:center;">Delivery Boys Details </h1>
+          <table style="margin-left: 430px;border-color: green;" border="2">
+              <tr>
+                  <th>Name</th>
+                  <th>City</th>
+                  <th>District</th>
+                  <th>Phone</th>
+              </tr>
+              <tr>
+                  {% for d in data %}
+                  <td>{{d.1}}</td>
+                  <td>{{d.3}}</td>
+                  <td>{{d.4}}</td>
+                  <td>{{d.7}}</td>
+              </tr>
+              {% endfor %}
+          </table>
+      
+
+        <br>
+       
+        <script>
+
+            var msg="{{msg}}";
+            if(msg!="")
+            {
+            alert(msg);
+            }
+        
+        </script>
+    </body>
+    <br><br><br>
+</html>
+{% endblock %}

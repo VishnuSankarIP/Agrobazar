@@ -1,0 +1,72 @@
+
+{% extends 'farmerbase.html' %}
+{% block content %}
+<html>
+    <head>
+        <title>viewcartproduct</title>
+        <style>
+             td{
+                padding:4px;
+               color: black;font-size: 20px;font-weight: 900;
+               text-align: center;
+            }
+            th{
+                width: 150px;
+                height: 25px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <br><br><br>
+        <h1 style="text-align:center; color: rgb(18, 68, 18);">DELIVERY STATUS</h1>
+        {% if j %}
+        <table align="center" border="1">
+            <tr>
+               
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>Category</th>
+                
+                <th>Price </th>
+                <th>Image </th>
+                <th>Date</th>
+                <th>Status</th>
+                
+            </tr>
+            {% for i in j %}
+            <tr>
+                
+                <td>{{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.3}}</td>
+                <td><img src="../static{{i.4}}"></td>
+                <td>{{i.6}}</td>
+                <td>{{i.5}}</td>
+               
+                
+               
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h4 style="text-align:center"> No delivery status available </h4>
+         {% endif %}
+
+        <br>
+        <script>
+
+            var msg="{{msg}}";
+            if(msg!="")
+            alert(msg)
+        
+        </script>
+        {% endblock %}
+        <br><br><br>
+    </body>
+</html>

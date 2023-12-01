@@ -1,0 +1,82 @@
+
+{% extends 'farmerbase.html' %}
+{% block content %}
+<html>
+    <head>
+        <title>viewaddproduct</title>
+        <style>
+            td{
+                padding:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <br><br><br>
+        <h1 style="text-align:center;">Products</h1>
+        <table align="center" border="1">
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Status</th>
+                
+            </tr>
+            {% for i in j %}
+            <tr>
+                <td> {{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.3}}</td>
+                <td>{{i.4}}</td>
+                <td>{{i.5}}</td>
+                
+                <td><a href="/approvefarmer?id={{i.0}}">approve</a></td>
+               
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+        <h1 style="text-align:center;">Added Products</h1>
+        <table align="center" border="1">
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Status</th>
+                
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td> {{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td>{{i.3}}</td>
+                <td>{{i.4}}</td>
+                <td>{{i.5}}</td>
+                
+                
+                <td><a href="/deleteproduct?id={{i.0}}">delete</a></td>
+                
+
+            </tr>
+            </tr>
+            {% endfor %}
+        </table>
+        <script>
+
+            var msg="{{msg}}";
+            if(msg!="")
+            alert(msg)
+        
+        </script>
+        <br><br><br>
+    </body>
+</html>
+{% endblock %}

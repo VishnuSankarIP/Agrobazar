@@ -1,0 +1,73 @@
+
+{% extends 'commonbase.html' %}
+{% block content %}
+
+<html>
+<head>
+<title>deliveryboyreg</title>  
+<style>
+td{
+    padding:5px;
+}
+body{
+    /* background-color:#1a4219; */
+    color: blanchedalmond;
+    
+}
+h2{
+    font-size: 30px;
+    text-align: center;
+    color:white;
+}
+#demo{
+    background-color: #1a4219;
+    width:700px;
+    margin-left:310px;
+    border-radius: 30px;
+}
+
+</style>
+    
+
+
+
+</head>
+<br><br>
+<div id="demo">
+<h2><b>LOGIN</b>
+</h2><br>
+<body>
+
+<form method="POST">
+    {% csrf_token %}
+    <table align="center">
+       
+
+        
+        <tr>
+            <th>UserName</th>
+            <td><input type="email" class="form-control" name="email" style="color: black;font-size: bold;font-weight: 800;"></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><input type="password"  class="form-control" name="password" style="color: black;font-size: bold;font-weight: 800;"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-success" value="login"></td>
+        </tr>
+
+
+
+        
+    </table>
+</form>
+</div>
+<br><br><br>
+{% endblock %}
+<script>
+   var msg="{{msg}}";
+    if(msg!=0)
+    alert(msg)
+</script>
+</body>
+</html>
